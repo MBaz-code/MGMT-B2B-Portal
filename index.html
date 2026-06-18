@@ -408,6 +408,8 @@
   @keyframes slidein{from{transform:translateX(120%);opacity:0}to{transform:none;opacity:1}}
 
   .backdrop{display:none}
+  .buildtag{position:fixed;left:8px;bottom:8px;z-index:200;background:rgba(30,36,72,.85);color:#fff;
+    font-size:10px;font-weight:700;letter-spacing:.6px;padding:3px 8px;border-radius:7px;pointer-events:none}
 
   /* ---------------- Responsive ---------------- */
   @media (max-width:1150px){
@@ -476,14 +478,14 @@
     </div>
     <nav class="nav" id="nav">
       <div class="nav-label">Operations</div>
-      <a href="#" class="active" data-view="dashboard"><span class="ic">▦</span> Dashboard</a>
-      <a href="#" data-view="tracking"><span class="ic">📍</span> Live Tracking <span class="tag" id="navActive">0</span></a>
-      <a href="#" data-view="orders"><span class="ic">📦</span> Orders</a>
+      <a href="#" class="active" data-view="dashboard" onclick="switchView('dashboard');return false"><span class="ic">▦</span> Dashboard</a>
+      <a href="#" data-view="tracking" onclick="switchView('tracking');return false"><span class="ic">📍</span> Live Tracking <span class="tag" id="navActive">0</span></a>
+      <a href="#" data-view="orders" onclick="switchView('orders');return false"><span class="ic">📦</span> Orders</a>
       <div class="nav-label">Business</div>
-      <a href="#" data-view="reports"><span class="ic">📊</span> SLA Reports</a>
-      <a href="#" data-view="invoices"><span class="ic">🧾</span> Invoices</a>
-      <a href="#" data-view="packages"><span class="ic">⭐</span> Service Packages</a>
-      <a href="#" data-view="account"><span class="ic">🤝</span> Account Manager</a>
+      <a href="#" data-view="reports" onclick="switchView('reports');return false"><span class="ic">📊</span> SLA Reports</a>
+      <a href="#" data-view="invoices" onclick="switchView('invoices');return false"><span class="ic">🧾</span> Invoices</a>
+      <a href="#" data-view="packages" onclick="switchView('packages');return false"><span class="ic">⭐</span> Service Packages</a>
+      <a href="#" data-view="account" onclick="switchView('account');return false"><span class="ic">🤝</span> Account Manager</a>
     </nav>
     <div class="side-card">
       <div class="am">
@@ -808,6 +810,7 @@
 </div>
 
 <div class="toast-wrap" id="toastWrap"></div>
+<div class="buildtag">BUILD v3</div>
 
 <script>
 /* ============================================================
@@ -1637,10 +1640,7 @@ function switchView(v){
   document.querySelector('.content').scrollTo?.(0,0);
   window.scrollTo({top:0,behavior:'smooth'});
 }
-// Bind each nav link directly (more reliable on iOS than click delegation)
-document.querySelectorAll('#nav a[data-view]').forEach(a=>{
-  a.addEventListener('click',e=>{ e.preventDefault(); switchView(a.dataset.view); });
-});
+// Nav uses inline onclick="switchView(...)" (most reliable on iOS Safari).
 function toggleNav(open){document.body.classList.toggle('nav-open',open);}
 
 /* ---- Filters & search ---- */
