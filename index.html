@@ -429,7 +429,6 @@
        the sidebar tabs unresponsive on iPhone. */
     .sidebar{left:calc(-1 * (var(--sidebar) + 14px));transition:left .28s ease}
     body.nav-open .sidebar{left:0}
-    body.nav-open{overflow:hidden}
     body.nav-open .backdrop{display:block;position:fixed;inset:0;background:rgba(20,14,45,.5);z-index:55}
     .main{grid-column:1}
     .menu-btn{display:grid;place-items:center;width:42px;height:42px;border-radius:11px}
@@ -478,14 +477,14 @@
     </div>
     <nav class="nav" id="nav">
       <div class="nav-label">Operations</div>
-      <a href="#" class="active" data-view="dashboard" onclick="switchView('dashboard');return false"><span class="ic">▦</span> Dashboard</a>
-      <a href="#" data-view="tracking" onclick="switchView('tracking');return false"><span class="ic">📍</span> Live Tracking <span class="tag" id="navActive">0</span></a>
-      <a href="#" data-view="orders" onclick="switchView('orders');return false"><span class="ic">📦</span> Orders</a>
+      <a href="#" class="active" data-view="dashboard"><span class="ic">▦</span> Dashboard</a>
+      <a href="#" data-view="tracking"><span class="ic">📍</span> Live Tracking <span class="tag" id="navActive">0</span></a>
+      <a href="#" data-view="orders"><span class="ic">📦</span> Orders</a>
       <div class="nav-label">Business</div>
-      <a href="#" data-view="reports" onclick="switchView('reports');return false"><span class="ic">📊</span> SLA Reports</a>
-      <a href="#" data-view="invoices" onclick="switchView('invoices');return false"><span class="ic">🧾</span> Invoices</a>
-      <a href="#" data-view="packages" onclick="switchView('packages');return false"><span class="ic">⭐</span> Service Packages</a>
-      <a href="#" data-view="account" onclick="switchView('account');return false"><span class="ic">🤝</span> Account Manager</a>
+      <a href="#" data-view="reports"><span class="ic">📊</span> SLA Reports</a>
+      <a href="#" data-view="invoices"><span class="ic">🧾</span> Invoices</a>
+      <a href="#" data-view="packages"><span class="ic">⭐</span> Service Packages</a>
+      <a href="#" data-view="account"><span class="ic">🤝</span> Account Manager</a>
     </nav>
     <div class="side-card">
       <div class="am">
@@ -810,7 +809,7 @@
 </div>
 
 <div class="toast-wrap" id="toastWrap"></div>
-<div class="buildtag">BUILD v3</div>
+<div class="buildtag">BUILD v4</div>
 
 <script>
 /* ============================================================
@@ -1640,7 +1639,18 @@ function switchView(v){
   document.querySelector('.content').scrollTo?.(0,0);
   window.scrollTo({top:0,behavior:'smooth'});
 }
-// Nav uses inline onclick="switchView(...)" (most reliable on iOS Safari).
+// iOS WebKit often fails to synthesize a `click` for taps inside a fixed/scrollable
+// drawer, so drive the tabs from touch events (which always fire) with a click fallback
+// for desktop. A small move threshold distinguishes a tap from a scroll.
+function bindNav(el){
+  const view=el.dataset.view;
+  let sx=0, sy=0, moved=false, lastTouch=0;
+  el.addEventListener('touchstart',e=>{const t=e.changedTouches[0];sx=t.clientX;sy=t.clientY;moved=false;},{passive:true});
+  el.addEventListener('touchmove',e=>{const t=e.changedTouches[0];if(Math.abs(t.clientX-sx)>10||Math.abs(t.clientY-sy)>10)moved=true;},{passive:true});
+  el.addEventListener('touchend',e=>{ if(moved)return; e.preventDefault(); lastTouch=Date.now(); switchView(view); },{passive:false});
+  el.addEventListener('click',e=>{ e.preventDefault(); if(Date.now()-lastTouch<700)return; switchView(view); });
+}
+document.querySelectorAll('#nav a[data-view]').forEach(bindNav);
 function toggleNav(open){document.body.classList.toggle('nav-open',open);}
 
 /* ---- Filters & search ---- */
