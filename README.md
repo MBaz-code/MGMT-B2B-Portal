@@ -34,10 +34,14 @@ dependencies — everything (HTML, CSS, JavaScript) lives in the one file.
 
 *All data is simulated for demonstration purposes.*
 
-## QR code (scan to open the repo)
+## QR code (scan to open the live portal)
 
-Ready-to-use QR codes that open `https://github.com/MBaz-code/MGMT-B2B-Portal`
-when scanned (verified to decode correctly):
+Ready-to-use QR codes that open the **rendered portal** (via htmlpreview) when
+scanned — verified to decode correctly:
+
+```
+https://htmlpreview.github.io/?https://github.com/MBaz-code/MGMT-B2B-Portal/blob/claude/hopeful-johnson-mh7hfi/index.html
+```
 
 | File | Use |
 |------|-----|
@@ -45,6 +49,6 @@ when scanned (verified to decode correctly):
 | `assets/snoonu-b2b-qr.png` | Plain high-contrast QR (most universally scannable) |
 | `assets/snoonu-b2b-qr.svg` | Vector version — scales to any size for print |
 
-> Generated at error-correction level **H** (~30% damage tolerance) so they stay
-> reliable on screens and in print.
+> Error-correction level **M** (QR version 7) — kept compact so it scans easily
+> from a projected slide. *htmlpreview requires the repository to be public.*
 
