@@ -34,14 +34,24 @@ dependencies — everything (HTML, CSS, JavaScript) lives in the one file.
 
 *All data is simulated for demonstration purposes.*
 
-## QR code (scan to open the live portal)
+## Live site & QR code
 
-Ready-to-use QR codes that open the **rendered portal** (via htmlpreview) when
-scanned — verified to decode correctly:
+The portal is hosted on **GitHub Pages** (reliable on phone, tablet and laptop —
+unlike the htmlpreview proxy, which is flaky on mobile):
 
 ```
-https://htmlpreview.github.io/?https://github.com/MBaz-code/MGMT-B2B-Portal/blob/claude/hopeful-johnson-mh7hfi/index.html
+https://mbaz-code.github.io/MGMT-B2B-Portal/
 ```
+
+### One-time setup to turn the live site on
+GitHub only lets a repo **admin** enable Pages, so this has to be done once in the UI:
+
+1. Repo → **Settings** → **Pages**
+2. **Build and deployment → Source → "Deploy from a branch"**
+3. Branch: **`claude/hopeful-johnson-mh7hfi`** · folder: **`/ (root)`** → **Save**
+4. Wait ~1 minute, then open the URL above. Every future push auto-rebuilds it.
+
+### QR codes (point at the live site above)
 
 | File | Use |
 |------|-----|
@@ -49,6 +59,6 @@ https://htmlpreview.github.io/?https://github.com/MBaz-code/MGMT-B2B-Portal/blob
 | `assets/snoonu-b2b-qr.png` | Plain high-contrast QR (most universally scannable) |
 | `assets/snoonu-b2b-qr.svg` | Vector version — scales to any size for print |
 
-> Error-correction level **M** (QR version 7) — kept compact so it scans easily
-> from a projected slide. *htmlpreview requires the repository to be public.*
+> Error-correction level **H** (~30% damage tolerance), QR version 5 — compact and
+> easy to scan from a projected slide. Both PNGs are verified to decode to the URL.
 
