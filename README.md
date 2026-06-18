@@ -21,7 +21,7 @@ dependencies — everything (HTML, CSS, JavaScript) lives in the one file.
 | **Order detail** | Driver, current street / pickup / drop-off, and a 6-step timeline (created → assigned → picked up → in transit → delivered → invoice updated) |
 | **SLA Reports** | On-time rate, complaint rate, avg response time, retention, trend chart, per-client table |
 | **Invoices** | Monthly delivery, white-label, bulk fulfilment & restocking fees + total open amount |
-| **Service Packages** | Starter / Business / Enterprise SLA tiers across the four B2B services |
+| **Service Packages** | Usage-based pricing — Starter / Business / Enterprise monthly plans with an included delivery allowance, then **pay-per-use overage** beyond the limit, plus a live usage meter & cost simulator |
 | **Account Manager** | Client-success support promise & SLA package |
 
 ## Interactive features

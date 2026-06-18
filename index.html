@@ -321,6 +321,50 @@
   .pkg .btn{justify-content:center;width:100%}
   .pkg.feat .btn.primary{background:#fff;color:var(--brand);box-shadow:none}
   .pkg.feat .btn.primary:hover{background:#f3efff}
+  .pkg.selected{border:2px solid var(--brand);box-shadow:0 0 0 4px var(--brand-soft),var(--shadow)}
+  .pkg.feat.selected{box-shadow:0 0 0 4px rgba(250,204,21,.5),var(--shadow-lg)}
+  .pkg .cur-badge{position:absolute;top:18px;left:18px;background:var(--brand);color:#fff;font-size:10.5px;font-weight:800;padding:4px 10px;border-radius:20px}
+  .pkg.feat .cur-badge{background:#FACC15;color:#5b3b00}
+  .pkg .usage-pill{background:var(--brand-soft);border:1px dashed #c9b6f3;border-radius:12px;padding:10px 13px;margin-bottom:18px;font-size:13px;color:var(--brand)}
+  .pkg .usage-pill b{font-size:17px}
+  .pkg .usage-pill span{display:block;font-size:11.5px;color:var(--ink-2);font-weight:600;margin-top:2px}
+  .pkg.feat .usage-pill{background:rgba(255,255,255,.16);border-color:rgba(255,255,255,.4);color:#fff}
+  .pkg.feat .usage-pill span{color:rgba(255,255,255,.9)}
+
+  /* usage-based meter panel (Claude-style) */
+  .usage-panel{display:grid;grid-template-columns:1.6fr 1fr;gap:18px;margin-bottom:20px}
+  .up-meter{background:var(--card);border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--shadow);padding:22px}
+  .up-head{display:flex;justify-content:space-between;align-items:flex-start;gap:12px;margin-bottom:20px}
+  .up-eyebrow{font-size:11px;letter-spacing:.5px;text-transform:uppercase;color:var(--muted);font-weight:700}
+  .up-plan{margin:5px 0 0;font-size:19px;font-weight:800}
+  .up-base{font-size:12.5px;font-weight:600;color:var(--muted);margin-left:4px}
+  .up-state{font-size:12px;font-weight:700;padding:6px 12px;border-radius:20px;white-space:nowrap}
+  .up-state.within{background:var(--ok-bg);color:var(--ok)}
+  .up-state.over{background:var(--warn-bg);color:var(--warn)}
+  .up-usage-row{display:flex;justify-content:space-between;font-size:13px;color:var(--ink-2);margin-bottom:9px;font-weight:600}
+  .up-usage-row b{font-size:16px;color:var(--ink)}
+  .meter{position:relative;height:18px;background:#EEF0F7;border-radius:20px;overflow:visible;margin-bottom:30px}
+  .meter-fill{position:absolute;top:0;height:18px;border-radius:20px;transition:width .15s,left .15s}
+  .meter-fill.inc{left:0;background:var(--grad)}
+  .meter-fill.ov{background:repeating-linear-gradient(45deg,#E0820A,#E0820A 6px,#F59E0B 6px,#F59E0B 12px);border-radius:0 20px 20px 0}
+  .meter-limit{position:absolute;top:-4px;height:26px;width:2px;background:#1E2438;transition:left .15s}
+  .meter-limit span{position:absolute;top:-20px;left:50%;transform:translateX(-50%);font-size:10px;font-weight:700;color:#1E2438;white-space:nowrap;background:#fff;padding:1px 5px;border-radius:5px;box-shadow:var(--shadow-sm)}
+  .up-over-note{font-size:12.5px;color:var(--warn);font-weight:700;background:var(--warn-bg);padding:9px 13px;border-radius:11px}
+  .up-under-note{font-size:12.5px;color:var(--ok);font-weight:700;background:var(--ok-bg);padding:9px 13px;border-radius:11px}
+  .up-sim{display:block;font-size:12px;font-weight:700;color:var(--ink-2);margin:20px 0 0}
+  .up-sim input[type=range]{width:100%;margin-top:10px;-webkit-appearance:none;appearance:none;height:7px;border-radius:20px;background:#E4E6F1;outline:none}
+  .up-sim input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;appearance:none;width:22px;height:22px;border-radius:50%;background:var(--grad);border:3px solid #fff;box-shadow:0 3px 8px rgba(91,54,224,.45);cursor:pointer}
+  .up-sim input[type=range]::-moz-range-thumb{width:20px;height:20px;border-radius:50%;background:#6D28D9;border:3px solid #fff;box-shadow:0 3px 8px rgba(91,54,224,.45);cursor:pointer}
+  .up-sim-scale{display:flex;justify-content:space-between;font-size:10.5px;color:var(--muted);font-weight:600;margin-top:5px}
+  .up-bill{background:linear-gradient(160deg,#1E1840,#2B2466);color:#fff;border-radius:var(--r);box-shadow:var(--shadow-lg);padding:22px}
+  .up-bill-label{font-size:12px;opacity:.8;font-weight:600}
+  .up-bill-total{font-size:32px;font-weight:800;letter-spacing:-.5px;margin:4px 0 16px}
+  .cost-line{display:flex;justify-content:space-between;align-items:flex-start;gap:10px;font-size:13px;padding:9px 0;border-bottom:1px solid rgba(255,255,255,.12)}
+  .cost-line small{opacity:.65;font-size:11px;font-weight:500}
+  .cost-line .muted{opacity:.6}
+  .cost-line .over-amt{color:#FBBF24;font-weight:800}
+  .cost-line.total{border-bottom:none;border-top:2px solid rgba(255,255,255,.25);margin-top:4px;padding-top:13px;font-size:15px;font-weight:800}
+  .up-fineprint{font-size:10.5px;opacity:.6;margin-top:12px;line-height:1.5}
 
   /* account manager */
   .am-card{display:grid;grid-template-columns:auto 1fr;gap:22px;align-items:center}
@@ -369,6 +413,7 @@
     .inv-summary{grid-template-columns:repeat(2,1fr)}
     .pkg-grid{grid-template-columns:1fr}
     .promise-grid{grid-template-columns:1fr}
+    .usage-panel{grid-template-columns:1fr}
   }
   @media (max-width:880px){
     .app{grid-template-columns:1fr}
@@ -617,12 +662,14 @@
       <section class="view" id="view-packages">
         <div class="section-head">
           <h3>B2B Service Packages</h3>
-          <span class="sub">Choose the SLA tier that fits your business — built on Snoonu's four-service B2B model</span>
+          <span class="sub">Usage-based pricing — a fixed monthly plan with included deliveries, then pay-per-use beyond your limit</span>
         </div>
+        <div id="usagePanel"></div>
         <div class="pkg-grid" id="pkgGrid"></div>
+        <div id="rateCard"></div>
         <div class="card" style="margin-top:18px">
           <h3 class="ct">What's included across the four B2B services</h3>
-          <div class="csub">Every package is powered by Snoonu's integrated last-mile network</div>
+          <div class="csub">Every package is powered by Snoonu's integrated last-mile network · all metered per delivery</div>
           <div class="promise-grid" id="svcGrid"></div>
         </div>
       </section>
@@ -1258,27 +1305,130 @@ function renderInvoices(){
 }
 
 /* ---- Packages ---- */
+/* Usage-based plans: fixed monthly base + included deliveries, then pay-per-use overage.
+   Each plan also meters white-label dispatches, restocking runs and express jobs. */
 const PKGS=[
-  {name:'Starter',tag:'For SMEs & small retail',price:'1,500',feat:[
-    'Up to 300 deliveries / month','Standard last-mile dispatch','Live tracking dashboard',
-    'Email support · 8h response','Monthly SLA report','95% on-time guarantee'],feat_:false},
-  {name:'Business',tag:'For cafés, restaurants & F&B',price:'4,900',feat:[
-    'Up to 1,500 deliveries / month','White-label branded tracking','Scheduled restocking runs',
-    'Dedicated account manager','Priority support · 1h response','97% on-time SLA + service credits'],feat_:true,ribbon:'Most Popular'},
-  {name:'Enterprise',tag:'For corporates & government',price:'Custom',feat:[
-    'Unlimited bulk fulfilment','Full API & ERP integration','24/7 priority hotline',
-    'Custom SLA & contracts','Quarterly business reviews','98%+ on-time + breach guarantee'],feat_:false}
+  {name:'Starter',tag:'For SMEs & small retail',base:1500,included:300,rate:12.00,feat_:false,
+    rates:[{k:'White-label dispatches',inc:0,rate:6.00},{k:'Scheduled restock runs',inc:6,rate:95},{k:'Same-day express',inc:30,rate:22}],
+    feat:['300 deliveries / month included','Then QAR 12.00 per extra delivery','Live tracking dashboard',
+          'Email support · 8h response','Monthly SLA report','95% on-time guarantee']},
+  {name:'Business',tag:'For cafés, restaurants & F&B',base:4900,included:1500,rate:8.50,feat_:true,ribbon:'Most Popular',
+    rates:[{k:'White-label dispatches',inc:800,rate:4.00},{k:'Scheduled restock runs',inc:60,rate:75},{k:'Same-day express',inc:200,rate:18}],
+    feat:['1,500 deliveries / month included','Then QAR 8.50 per extra delivery','White-label branded tracking',
+          'Dedicated account manager','Priority support · 1h response','97% on-time SLA + service credits']},
+  {name:'Enterprise',tag:'For corporates & government',base:12000,included:5000,rate:6.00,feat_:false,
+    rates:[{k:'White-label dispatches',inc:3000,rate:2.50},{k:'Scheduled restock runs',inc:250,rate:55},{k:'Same-day express',inc:1000,rate:12}],
+    feat:['5,000 deliveries / month included','Then QAR 6.00 per extra delivery','Full API & ERP integration',
+          '24/7 priority hotline','Custom SLA & quarterly reviews','98%+ on-time + breach guarantee']},
 ];
-function renderPackages(){
-  document.getElementById('pkgGrid').innerHTML=PKGS.map(p=>
-    '<div class="pkg'+(p.feat_?' feat':'')+'">'+(p.ribbon?'<div class="ribbon">'+p.ribbon+'</div>':'')+
-    '<h4>'+p.name+'</h4>'+
-    '<div class="price">'+(p.price==='Custom'?'Custom':'<small>QAR </small>'+p.price)+(p.price==='Custom'?'':'<small> /mo</small>')+'</div>'+
-    '<div class="ptag">'+p.tag+'</div>'+
-    '<ul class="pkg-feat-list">'+p.feat.map(f=>'<li><span class="ck">✓</span>'+f+'</li>').join('')+'</ul>'+
-    '<button class="btn '+(p.feat_?'primary':'ghost')+'" onclick="toast(\''+p.name+' package\',\'Our team will contact you to activate the '+p.name+' plan.\',\'ok\')">'+
-    (p.price==='Custom'?'Contact sales':'Choose '+p.name)+'</button></div>').join('');
+let selectedPlan = 1;          // Business by default
+let usageDeliveries = 2418;    // deliveries booked this billing cycle
+const USAGE_MAX = 8000;        // slider ceiling
 
+function planCost(p,used){
+  const over=Math.max(0,used-p.included);
+  return {over, overCost:over*p.rate, total:p.base+over*p.rate};
+}
+function money(n){return 'QAR '+Number(Math.round(n)).toLocaleString('en-US');}
+
+function renderUsagePanel(){
+  const p=PKGS[selectedPlan];
+  const c=planCost(p,usageDeliveries);
+  const over=c.over>0;
+  const incPct=Math.min(p.included,usageDeliveries)/USAGE_MAX*100;
+  const ovPct=Math.max(0,usageDeliveries-p.included)/USAGE_MAX*100;
+  const limPct=p.included/USAGE_MAX*100;
+  document.getElementById('usagePanel').innerHTML=
+    '<div class="usage-panel">'+
+      '<div class="up-meter">'+
+        '<div class="up-head"><div><div class="up-eyebrow">Current billing cycle · June 2026</div>'+
+          '<h3 class="up-plan">'+p.name+' plan <span class="up-base">'+money(p.base)+'/mo base</span></h3></div>'+
+          '<span class="up-state '+(over?'over':'within')+'">'+(over?'⚡ Over plan limit':'✓ Within plan')+'</span></div>'+
+
+        '<div class="up-usage-row"><span>Deliveries used</span>'+
+          '<span><b>'+fmt(usageDeliveries)+'</b> / '+fmt(p.included)+' included</span></div>'+
+        '<div class="meter"><div class="meter-fill inc" style="width:'+incPct+'%"></div>'+
+          '<div class="meter-fill ov" style="left:'+incPct+'%;width:'+ovPct+'%"></div>'+
+          '<div class="meter-limit" style="left:'+limPct+'%"><span>Plan limit '+fmt(p.included)+'</span></div></div>'+
+        (over?'<div class="up-over-note">'+fmt(c.over)+' deliveries beyond your plan → billed at '+p.rate.toFixed(2)+' QAR each</div>'
+             :'<div class="up-under-note">'+fmt(p.included-usageDeliveries)+' deliveries remaining before pay-per-use kicks in</div>')+
+
+        '<label class="up-sim">Simulate deliveries this cycle'+
+          '<input id="usageSlider" type="range" min="0" max="'+USAGE_MAX+'" step="10" value="'+usageDeliveries+'" oninput="setUsage(this.value)"></label>'+
+        '<div class="up-sim-scale"><span>0</span><span>'+fmt(USAGE_MAX)+' deliveries</span></div>'+
+      '</div>'+
+
+      '<div class="up-bill">'+
+        '<div class="up-bill-label">Estimated charge this cycle</div>'+
+        '<div class="up-bill-total" id="billTotal">'+money(c.total)+'</div>'+
+        '<div class="cost-line"><span>Monthly subscription</span><span>'+money(p.base)+'</span></div>'+
+        '<div class="cost-line"><span>Included deliveries ('+fmt(p.included)+')</span><span class="muted">Included</span></div>'+
+        '<div class="cost-line"><span>Pay-per-use overage<br><small>'+fmt(c.over)+' × '+p.rate.toFixed(2)+' QAR</small></span>'+
+          '<span class="'+(over?'over-amt':'muted')+'" id="billOver">'+(over?money(c.overCost):money(0))+'</span></div>'+
+        '<div class="cost-line total"><span>Total estimate</span><span id="billTotal2">'+money(c.total)+'</span></div>'+
+        '<button class="btn primary" style="width:100%;justify-content:center;margin-top:14px" onclick="toast(\'Billing\',\'This is your projected '+p.name+' charge. Final invoice is metered on actual usage.\',\'info\')">View detailed estimate</button>'+
+        '<div class="up-fineprint">No caps or throttling — extra deliveries are simply billed per-use at month end, like a usage-based API plan.</div>'+
+      '</div>'+
+    '</div>';
+}
+
+function setUsage(v){
+  usageDeliveries=parseInt(v)||0;
+  const p=PKGS[selectedPlan], c=planCost(p,usageDeliveries), over=c.over>0;
+  // live-update without full re-render for smooth dragging
+  const incPct=Math.min(p.included,usageDeliveries)/USAGE_MAX*100;
+  const ovPct=Math.max(0,usageDeliveries-p.included)/USAGE_MAX*100;
+  document.querySelector('.meter-fill.inc').style.width=incPct+'%';
+  const ov=document.querySelector('.meter-fill.ov'); ov.style.left=incPct+'%'; ov.style.width=ovPct+'%';
+  document.querySelector('.up-usage-row b').textContent=fmt(usageDeliveries);
+  const st=document.querySelector('.up-state'); st.className='up-state '+(over?'over':'within'); st.textContent=over?'⚡ Over plan limit':'✓ Within plan';
+  const note=document.querySelector('.up-over-note,.up-under-note');
+  note.className=over?'up-over-note':'up-under-note';
+  note.textContent=over? fmt(c.over)+' deliveries beyond your plan → billed at '+p.rate.toFixed(2)+' QAR each'
+                       : fmt(p.included-usageDeliveries)+' deliveries remaining before pay-per-use kicks in';
+  document.getElementById('billTotal').textContent=money(c.total);
+  document.getElementById('billTotal2').textContent=money(c.total);
+  const bo=document.getElementById('billOver'); bo.textContent=over?money(c.overCost):money(0); bo.className=over?'over-amt':'muted';
+  document.querySelectorAll('.cost-line small')[0].textContent=fmt(c.over)+' × '+p.rate.toFixed(2)+' QAR';
+}
+
+function selectPlan(i){
+  selectedPlan=i;
+  renderUsagePanel(); renderPkgCards(); renderRateCard();
+  toast(PKGS[i].name+' plan selected','Monthly base '+money(PKGS[i].base)+' · '+fmt(PKGS[i].included)+' deliveries included','ok');
+}
+
+function renderPkgCards(){
+  document.getElementById('pkgGrid').innerHTML=PKGS.map((p,i)=>{
+    const sel=i===selectedPlan;
+    return '<div class="pkg'+(p.feat_?' feat':'')+(sel?' selected':'')+'">'+
+      (p.ribbon?'<div class="ribbon">'+p.ribbon+'</div>':'')+
+      (sel?'<div class="cur-badge">✓ Current plan</div>':'')+
+      '<h4>'+p.name+'</h4>'+
+      '<div class="price"><small>QAR </small>'+fmt(p.base)+'<small> /mo</small></div>'+
+      '<div class="ptag">'+p.tag+'</div>'+
+      '<div class="usage-pill"><b>'+fmt(p.included)+'</b> deliveries included<span>then QAR '+p.rate.toFixed(2)+' / extra delivery</span></div>'+
+      '<ul class="pkg-feat-list">'+p.feat.map(f=>'<li><span class="ck">✓</span>'+f+'</li>').join('')+'</ul>'+
+      '<button class="btn '+(sel?'ghost':(p.feat_?'primary':'ghost'))+'"'+(sel?' disabled style="opacity:.55;cursor:default"':'')+' onclick="selectPlan('+i+')">'+
+      (sel?'✓ Selected':'Choose '+p.name)+'</button></div>';
+  }).join('');
+}
+
+function renderRateCard(){
+  const p=PKGS[selectedPlan];
+  const rows=[{k:'Last-mile deliveries',inc:p.included,rate:p.rate}].concat(p.rates);
+  document.getElementById('rateCard').innerHTML=
+    '<div class="card" style="margin-top:18px;overflow-x:auto">'+
+      '<h3 class="ct">Pay-per-use rates beyond your '+p.name+' plan</h3>'+
+      '<div class="csub">Like a usage-based API plan: included volume is covered by your monthly fee — anything above is metered per unit</div>'+
+      '<table><thead><tr><th>Metered service</th><th class="num">Included / month</th><th class="num">Pay-per-use rate</th><th class="num">Overage on +100 units</th></tr></thead><tbody>'+
+      rows.map(r=>'<tr><td><b>'+r.k+'</b></td><td class="num">'+(r.inc?fmt(r.inc):'—')+'</td>'+
+        '<td class="num">QAR '+r.rate.toFixed(2)+'</td><td class="num">QAR '+fmt(r.rate*100)+'</td></tr>').join('')+
+      '</tbody></table></div>';
+}
+
+function renderPackages(){
+  renderUsagePanel(); renderPkgCards(); renderRateCard();
   document.getElementById('svcGrid').innerHTML=[
     {i:'🛵',t:'White-label Last-Mile',d:'Your brand, our fleet — deliveries dispatched under your own identity.'},
     {i:'📦',t:'Corporate Bulk Fulfilment',d:'High-volume corporate & government orders handled end-to-end.'},
@@ -1444,7 +1594,7 @@ const TITLES={
   orders:['B2B Order Ledger','All deliveries across the four B2B services'],
   reports:['SLA Performance Report','Service-level metrics · June 2026'],
   invoices:['Invoices & Billing','June 2026 statement · Net-15 terms'],
-  packages:['B2B Service Packages','Choose your SLA tier'],
+  packages:['B2B Service Packages','Usage-based pricing · monthly plan + pay-per-use overage'],
   account:['Client Success & Account Management','Your dedicated B2B support']
 };
 function switchView(v){
