@@ -1,0 +1,35 @@
+# Snoonu B2B — Integrated Logistics Portal (Demo)
+
+A fully working, single-file demo of a B2B last-mile logistics portal for Snoonu's
+proposed Qatar B2B expansion (SMEs, corporates, cafés/restaurants, and government clients).
+
+> Built for the MGMT4000 *Snoonu B2B Business Model Integration* strategic plan.
+> Snoonu-inspired purple/blue styling — no official brand assets used.
+
+## Run it
+
+Just open **`index.html`** in any modern browser. No build step, no server, no
+dependencies — everything (HTML, CSS, JavaScript) lives in the one file.
+
+## What's inside
+
+| Area | Highlights |
+|------|-----------|
+| **Dashboard** | KPI cards (active deliveries, on-time rate, open invoices, retention) |
+| **Live Tracking** | Doha-style map with routes and **moving vehicle markers** (JS-simulated, real-time) |
+| **Orders** | Delivery cards with order ID, client, route, status, ETA & progress bar; click to open detail panel |
+| **Order detail** | Driver, current street / pickup / drop-off, and a 6-step timeline (created → assigned → picked up → in transit → delivered → invoice updated) |
+| **SLA Reports** | On-time rate, complaint rate, avg response time, retention, trend chart, per-client table |
+| **Invoices** | Monthly delivery, white-label, bulk fulfilment & restocking fees + total open amount |
+| **Service Packages** | Starter / Business / Enterprise SLA tiers across the four B2B services |
+| **Account Manager** | Client-success support promise & SLA package |
+
+## Interactive features
+
+- **➕ New B2B Delivery** — dispatches a new order that immediately starts moving on the map
+- **⬇️ Export SLA Report (CSV)** — generates and downloads a real CSV file
+- **🔗 Copy tracking link** — copies a demo client tracking URL to the clipboard
+- **Filters & search** — by delivery status and by client / order ID
+- Fully **responsive** for desktop and mobile (collapsing sidebar drawer)
+
+*All data is simulated for demonstration purposes.*
