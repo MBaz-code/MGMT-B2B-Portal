@@ -48,8 +48,13 @@ GitHub only lets a repo **admin** enable Pages, so this has to be done once in t
 
 1. Repo → **Settings** → **Pages**
 2. **Build and deployment → Source → "Deploy from a branch"**
-3. Branch: **`claude/hopeful-johnson-mh7hfi`** · folder: **`/ (root)`** → **Save**
-4. Wait ~1 minute, then open the URL above. Every future push auto-rebuilds it.
+3. Branch: **`gh-pages`** · folder: **`/ (root)`** → **Save**
+4. Wait ~1 minute, then open the URL above.
+
+> The site is served from the **`gh-pages`** branch (it carries a `.nojekyll` file
+> for plain static serving). The main dev branch `claude/hopeful-johnson-mh7hfi`
+> can't be used as the Pages source because GitHub Pages won't build from a branch
+> whose name contains a `/`.
 
 ### QR codes (point at the live site above)
 
