@@ -79,6 +79,7 @@
     display:flex;align-items:center;gap:12px;padding:11px 13px;border-radius:12px;
     color:#fff;text-decoration:none;font-size:14px;font-weight:500;opacity:.86;
     transition:.18s; position:relative;
+    cursor:pointer; touch-action:manipulation; -webkit-tap-highlight-color:rgba(255,255,255,.15);
   }
   .nav a .ic{width:20px;text-align:center;font-size:16px;flex:none;opacity:.95}
   .nav a .tag{margin-left:auto;font-size:10.5px;background:rgba(255,255,255,.22);padding:2px 7px;border-radius:20px;font-weight:700}
@@ -421,8 +422,11 @@
   .show-sm{display:none}
   @media (max-width:880px){
     .app{grid-template-columns:1fr}
-    .sidebar{transform:translateX(-100%);transition:transform .28s ease}
-    body.nav-open .sidebar{transform:none}
+    /* Slide via `left`, NOT transform: iOS Safari mis-hit-tests taps on a
+       position:fixed element that has been moved with translate, which made
+       the sidebar tabs unresponsive on iPhone. */
+    .sidebar{left:calc(-1 * (var(--sidebar) + 14px));transition:left .28s ease}
+    body.nav-open .sidebar{left:0}
     body.nav-open{overflow:hidden}
     body.nav-open .backdrop{display:block;position:fixed;inset:0;background:rgba(20,14,45,.5);z-index:55}
     .main{grid-column:1}
@@ -1633,8 +1637,9 @@ function switchView(v){
   document.querySelector('.content').scrollTo?.(0,0);
   window.scrollTo({top:0,behavior:'smooth'});
 }
-document.getElementById('nav').addEventListener('click',e=>{
-  const a=e.target.closest('a'); if(!a)return; e.preventDefault(); switchView(a.dataset.view);
+// Bind each nav link directly (more reliable on iOS than click delegation)
+document.querySelectorAll('#nav a[data-view]').forEach(a=>{
+  a.addEventListener('click',e=>{ e.preventDefault(); switchView(a.dataset.view); });
 });
 function toggleNav(open){document.body.classList.toggle('nav-open',open);}
 
