@@ -33,3 +33,18 @@ dependencies — everything (HTML, CSS, JavaScript) lives in the one file.
 - Fully **responsive** for desktop and mobile (collapsing sidebar drawer)
 
 *All data is simulated for demonstration purposes.*
+
+## QR code (scan to open the repo)
+
+Ready-to-use QR codes that open `https://github.com/MBaz-code/MGMT-B2B-Portal`
+when scanned (verified to decode correctly):
+
+| File | Use |
+|------|-----|
+| `assets/snoonu-b2b-qr-card.png` | Branded, presentation-ready card (Snoonu purple) — drop straight into slides |
+| `assets/snoonu-b2b-qr.png` | Plain high-contrast QR (most universally scannable) |
+| `assets/snoonu-b2b-qr.svg` | Vector version — scales to any size for print |
+
+> Generated at error-correction level **H** (~30% damage tolerance) so they stay
+> reliable on screens and in print.
+
